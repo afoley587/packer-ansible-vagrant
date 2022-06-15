@@ -1,3 +1,4 @@
 *.box
 output-vbox/
 .vagrant/
+.DS_Store

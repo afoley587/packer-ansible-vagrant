@@ -1,0 +1,18 @@
+---
+# -------------------------------------
+# Packer Provisioning Tasks
+# These tasks get called by packer
+# via the provisioner block
+# -------------------------------------
+- name: Packer Provisioning Playbook
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Run apt related tasks
+      become: true
+      import_tasks: tasks/apt.yml
+    
+    - name: Run nginx related tasks
+      become: true
+      import_tasks: tasks/nginx.yml

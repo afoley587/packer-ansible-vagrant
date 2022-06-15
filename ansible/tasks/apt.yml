@@ -1,0 +1,26 @@
+---
+# -------------------------------------
+# Apt Tasks
+# Tasks to:
+#   * Update Packages
+#   * Install New Packages
+#   * Clean up unneeded packages
+# -------------------------------------
+
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: true
+    update_cache: true
+
+- name: apt install the required packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nginx
+    - ufw
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: true
+    autoremove: true

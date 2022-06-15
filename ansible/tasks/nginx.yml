@@ -1,0 +1,23 @@
+---
+# -------------------------------------
+# NGINX Tasks
+# Tasks to:
+#   * Update default files for nginx
+#   * Restart and enable NGINX
+# -------------------------------------
+- name: copy the default nginx files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+
+  loop:
+    - src: files/default-index.html
+      dest: /usr/share/nginx/html/index.html
+    - src: files/default-nginx.conf
+      dest: /etc/nginx/nginx.conf
+
+- name: start nginx and enable it for reboot
+  service:
+    name: nginx
+    state: started
+    enabled: true

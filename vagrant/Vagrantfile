@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # Name of our newly created box
+  config.vm.box = "devops-fun"
+
+  config.ssh.username = "packer"
+  config.ssh.password = "packer"
+
+  # Create a forwarded port so that we can view the NGINX host from our local
+  # machine on port 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    vb.gui = true
+  end
+end

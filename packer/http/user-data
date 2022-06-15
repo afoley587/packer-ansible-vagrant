@@ -1,0 +1,37 @@
+#cloud-config
+autoinstall:
+  version: 1
+  apt:
+    conf: |
+      Acquire {
+        Check-Date "false";
+      };
+  
+  ssh:
+    allow-pw: true
+    install-server: true
+  user-data:
+    disable_root: false
+    users:
+      - name: packer
+        shell: /bin/bash
+        lock-passwd: false
+        # docker run --rm -it egray/mkpasswd -m sha-512 --rounds=4096
+        # Password: packer
+        passwd: "$6$rounds=4096$plAMZXxMgEQp$.HVHYzUZqjHiiE9JslvPk5HvWsPFK2fFIwGFTdM6VlLpqqJUrd/l787WPjLYs3GJfhLQkpjVraYU1gmiv1SF.1"
+  locale: en_US
+  keyboard:
+    layout: en
+  package_update: false
+  package_upgrade: false
+  packages:
+    - apt-transport-https
+    - sudo
+    - openssh-server
+    - wget
+    - curl
+    - python3
+    - python3-pip
+  
+  late-commands:
+    - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer

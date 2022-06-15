@@ -1,5 +1,7 @@
 # Localhost Love With Packer + Ansible + Vagrant
 ## Overview
+![Overview](assets/thumbnail.png)
+
 Do you find yourself having trouble testing server updates?
 Or do you just want to build a server?
 Or do you just want to get in to DevOps and don't really know
@@ -469,6 +471,8 @@ NGINX webpage:
 
 * Open a Browser and go to `http://127.0.0.1:8080`
 * You should see a page similar to the below
+
+![Hello From Ansible](assets/hello-ansible.png)
 
 Or if you prefer a terminal:
 

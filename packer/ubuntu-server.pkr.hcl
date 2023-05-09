@@ -5,7 +5,7 @@ variable "boot_wait" {
 
 variable "iso_checksum" {
   type    = string
-  default = "84aeaf7823c8c61baa0ae862d0a06b03409394800000b3235854a6b38eb4856f"
+  default = "5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
 }
 
 variable "iso_url" {
